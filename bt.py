@@ -97,7 +97,7 @@ class RepeatUntilFail(Composite):
 class Probability(Composite):
     @log_execution
     def execute(self, state, chance=0.5):
-        if(random() < chance):
+        if(random.random() < chance):
             return self.child_nodes[0].execute(state)
         else:
             return False
