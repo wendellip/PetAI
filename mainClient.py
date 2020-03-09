@@ -12,3 +12,4 @@ if __name__ == "__main__":
     print("You have adopted a new {}, what would you like to name it?".format(petList[pet_index]))
     name = input()
     print((petList[pet_index], name))
+    print("hello")
