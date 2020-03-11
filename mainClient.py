@@ -1,14 +1,31 @@
-
-
+from pets import *
 
 
 if __name__ == "__main__":
+    # Choosing which pet to adopt
     print("Welcome to PetAI! Please select what kind of pet you would like.")
     petList = ["Fish", "Dog", "Cat"]
-    for i, pet in enumerate(petList):
-        print("{}. {}".format(i+1, pet))
-    choice = input().lower()
-    pet_index = next(i for i, petType in enumerate(petList) if petType.lower() == choice)
-    print("You have adopted a new {}, what would you like to name it?".format(petList[pet_index]))
+    try:
+        for i, pet in enumerate(petList):
+            print("{}. {}".format(i+1, pet))
+        choice = input().lower()
+        index = next(i for i, petList in enumerate(petList) if petList.lower() == choice)
+    except StopIteration as e:
+        print("Input is not a choice. Please select a valid choice next time.")
+        print("Exiting...")
+        exit()
+
+    # Naming pet
+    print("You have adopted a new {}, what would you like to name it?".format(petList[index]))
     name = input()
-    print((petList[pet_index], name))
+    pet = eval(petList[index])(name)
+    print()
+    
+    # Pet initialized, behaviors will now start and react to owner actions
+    petMeters = pet.create_meter()
+    petItems = pet.create_item()
+    while(True):
+        pet.execute(petMeters, petItems)
+        pet.actions(petMeters, petItems)
+        pet.increase_meter(petMeters)
+        print()
