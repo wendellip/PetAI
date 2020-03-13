@@ -13,8 +13,8 @@ class Pet:
 class Dog(Pet):
     def execute(self):
         pass
-        
-class Cat(Pet):   
+
+class Cat(Pet):
     # This function will exhibit a behavior from the cat through the use of a behavior tree
     def execute(self, meters, items):
         print("My hunger is {}".format(meters["hunger"]))
@@ -56,8 +56,8 @@ class Cat(Pet):
             self.actions(meters, items)
 
     # Initialize the cat's meters, this function should be called only once
-    def create_meter(self):
-        meter = {
+    def __init__(self):
+        self.meter = {
             "hunger": 0,
             "energy": 0,
             "bladder": 0,
@@ -65,8 +65,6 @@ class Cat(Pet):
             "hygiene": 0,
             "social": 0
         }
-
-        return meter
 
     # Create items necessary for a cat, function should be called only once as well
     def create_item(self):
