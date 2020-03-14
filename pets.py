@@ -1,4 +1,4 @@
-22from bt_nodes import *
+from bt_nodes import *
 from checks import *
 from behaviors import *
 
@@ -13,7 +13,7 @@ class Pet:
 class Dog(Pet):
     def execute(self):
         pass
-        
+
 class Cat(Pet):
 
 
